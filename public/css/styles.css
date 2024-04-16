@@ -1,0 +1,501 @@
+:root{
+    --verde: #a2d02d;
+    --Azul_marino: #052449; 
+    --Azul_claro: #3580b1;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: "Barlow", sans-serif;
+}
+
+body{
+    background-image: url("/img/fondos/FondoBienvenida.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+a{
+    text-decoration: none; /* Elimina la decoración de texto predeterminada */
+    color: inherit; /* Hereda el color del texto del elemento padre */
+    cursor: pointer; /* Cambia el cursor al puntero cuando se pasa por encima */
+}
+
+/*MENU*/
+
+.menu90{
+    width: 90%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu90 img{
+    width: 20%;
+}
+
+.menu90 p{
+    font-size: 35px;
+    color: var(--verde);
+    font-weight: bolder;
+}
+
+/*BANNER1*/
+
+.banner1_40{
+    display: flex;
+    margin: 145px auto 8% auto;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+    height: 40%;
+}
+
+.banner1_40 h1{
+    font-size: 60px;
+    font-family: "Outfit", sans-serif;
+}
+
+.banner1_boton{
+    padding: 15px 30px;
+    background-color: var(--verde);
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
+    
+}
+
+.banner1_boton p{
+    color: var(--Azul_marino);
+}
+
+.banner1_sub{
+    font-size: 20px;
+}
+
+/*BANNER2*/
+
+.banner2_90{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    left: 50%;
+    transform: translateX(-50%, -50%);
+}
+
+.banner2_90 p{
+    font-size: 16px;
+    color: white;
+}
+
+/*FORMULARIO*/
+
+.formulario{
+    background-color: rgb(53, 127, 173, 0.3);
+    backdrop-filter: bluWr(4px);
+    box-shadow: 10px 10px 41px 0px rgba(255, 255, 255, 0.2);
+    /*position: absolute;*/
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    margin: 10px auto 25px auto;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    width: 400px;
+    border-radius: 15px;
+}
+
+.formulario h2{
+    color: white;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+.formulario form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .datos{
+    position: relative;
+    border-bottom: 2px solid #052449;
+    margin: 30px 0;
+}
+
+.datos input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.datos label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: beige;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.datos span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.datos input:focus ~ label,
+.datos input:focus ~ label{
+    top: -5px;
+    color: var(--verde);
+}
+
+.datos input:focus ~ span::before,
+.datos input:focus ~ span::before{
+    top: -5px;
+}
+
+.fade-label {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-label.hidden {
+    opacity: 0;
+}
+
+.boton_formulario{
+    align-items: center;
+    margin: 10px 0 35px 0;
+    background-color: var(--verde);
+    padding: 15px 30px;
+    width: fit-content;
+    border-radius: 15px;
+    font-weight: bold;
+    border: none;
+    color: var(--Azul_marino);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/*BANNER AVISO LEGAL*/
+
+.banner_Avisos{
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    backdrop-filter: bluWr(4px);
+    box-shadow: 10px 10px 41px 0px rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 40px;
+    align-items: center;
+    overflow: auto;
+}
+
+.banner_Avisos_h1{
+    font-family: "Outfit", sans-serif;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.banner_Avisos p,h2,ul,li,h3,hr,em,h4{
+    color: var(--Azul_marino);
+}
+
+.banner_Avisos h1{
+    color: var(--Azul_marino);
+}
+
+.banner_Avisos li{
+    transform: translate(4%);
+}
+
+.banner_Avisos h2{
+    margin: 10px 0 10px 0;
+}
+
+.banner_Avisos_h1 hr{
+    width: 400px;
+    margin: 20px 0 40px 0;
+    border-width: 2px;
+}
+
+.Avisos{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.banner_Avisos strong{
+    color: var(--Azul_marino);
+}
+
+/*CREACION DE ESTUDIO*/
+
+.menuEstudio{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 10px auto;
+    font-size: 17px;
+}
+
+.logo{
+    width: 15%;   
+}
+
+.menuIconos{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+}
+
+.menuIconos p{
+    color: white;
+}
+
+.menuIconos img{
+    width: 10%;
+}
+
+.datosEstudio{
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0.836);
+}
+
+.datosEstudio_90{
+    width: 95%;
+    height: fit-content;
+    padding: 25px;
+    margin: 20px auto;
+}
+
+.datosh1{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.datosh1 p{
+    padding: 15px 30px;
+    border-radius: 15px;
+    background-color: var(--verde);
+    font-weight: bold;
+}
+
+.datosEstudio h1,p{
+    color: var(--Azul_marino);
+}
+
+.cajas{
+    border: 2px solid var(--Azul_marino);
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.cajas hr{
+    border-width: 1px;
+    border-color: var(--Azul_marino);
+}
+
+.caja_padding{
+    padding-top: 15px;
+}
+
+.cajas p{
+    padding-bottom: 5px;
+}
+
+.caja_fila{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    text-align: center;
+}
+
+.caja_fila input{
+    min-width: 1100px;
+    max-height: 20px;
+    color: var(--Azul_marino);
+}
+
+.hoteles{
+    background-color: transparent;
+}
+
+.div_titulo{
+    text-align: center;
+}
+
+.menu_lateral_hoteles{
+    /*AQUI TENGO QUE HACER QUE SEA UNA SCROLL HORIZONTAL*/
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.div_hoteles{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: 200px;
+}
+
+.div_hoteles h3{
+    padding-bottom: 10px;
+}
+
+.caja_fila_hotel{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: baseline;
+    text-align: center;
+}
+
+.caja_fila_hotel label{
+    color: var(--Azul_marino);
+}
+
+.caja_fila_hotel input{
+    min-width: 100px;
+    max-height: 20px;
+    color: var(--Azul_marino);
+}
+
+.hoteles input{
+    width: 80%;
+    height: 40px;
+    padding-top: 10px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid #052449;
+}
+
+/*MOSTRAR HOTELES*/
+
+.lista_hoteles{
+    border: 2px solid var(--Azul_marino);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.hotel_uni{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.hotel_uni h2{
+    margin-right: 10%;
+}
+
+.hotel_uni img{
+    width: 35px;
+}
+
+/*INSERCION HOTEL*/
+
+.formulario_hotel{
+    background-color: rgb(53, 127, 173, 0.3);
+    backdrop-filter: bluWr(4px);
+    box-shadow: 10px 10px 41px 0px rgba(255, 255, 255, 0.2);
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    margin: 10px auto 25px auto;
+    width: 90%;
+    border-radius: 15px;
+}
+
+.formulario_hotel h2{
+    color: white;
+}
+
+.formulario_hotel form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .datos_hotel{
+    position: relative;
+    border-bottom: 2px solid #052449;
+    margin: 30px 0;
+}
+
+.datos_hotel input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.datos_hotel label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: beige;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.datos_hotel span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.datos_hotel input:focus ~ label,
+.datos_hotel input:focus ~ label{
+    top: -5px;
+    color: var(--verde);
+}
+
+.datos_hotel input:focus ~ span::before,
+.datos_hotel input:focus ~ span::before{
+    top: -5px;
+}
+
+.boton_formulario{
+    align-items: center;
+    margin: 10px 0 35px 0;
+    background-color: var(--verde);
+    padding: 15px 30px;
+    width: fit-content;
+    border-radius: 15px;
+    font-weight: bold;
+    border: none;
+    color: var(--Azul_marino);
+    font-weight: bold;
+    font-size: 16px;
+}
+
