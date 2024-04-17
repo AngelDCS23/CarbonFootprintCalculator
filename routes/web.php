@@ -36,6 +36,10 @@ Route::get('/login', function () {
     return view('login.login');
 })->name('login');
 
+Route::get('/datosHotel', function () {
+    return view('inserccionDatosHotel.inserccionDatos');
+})->name('datosHotel');
+
 Route::get('/hoteles', 'App\Http\Controllers\MostrarHotelesController@ListadoHoteles')->name('hotel');
 
 Route::get('/anios', 'App\Http\Controllers\AniosController@index')->name('anios.index');

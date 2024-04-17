@@ -8,7 +8,6 @@ use App\Models\EmpresaGrat;
 
 class CreacionHotelController extends Controller
 {
-
     public function almacenarHotel(Request $request){
         $request->validate([
             'Nombre' => 'required|string|max:45',
@@ -30,6 +29,7 @@ class CreacionHotelController extends Controller
         $hotel->empresa()->associate($empresa);
         $hotel->save();
 
-        return redirect()->route('hotel', ['idHotel' => $empresa->id]);
+        return redirect()->route('hotel');
+        //return redirect()->route('hotel', ['idHotel' => $empresa->id]);
     }
 }

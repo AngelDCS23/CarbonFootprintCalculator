@@ -17,7 +17,7 @@
                         <h2>{{ $hotel->Nombre }}</h2>
                         <p>Dirección: {{ $hotel->Direccion }}</p>
                         <p>País: {{ $hotel->Pais }}</p>
-                        <a href="/DONDEYOQUIERA">
+                        <a href="/datosHotel">
                             <img src="{{asset('img/iconos/flecha.png')}}" alt="">
                         </a>
                     </div>

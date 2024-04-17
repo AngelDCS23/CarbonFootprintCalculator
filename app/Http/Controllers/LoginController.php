@@ -20,6 +20,7 @@ class LoginController extends Controller{
         
         $datos = $usuario->toArray();
 
+
         if ($usuario && Hash::check($credenciales['password'], $usuario->password)) {
             $usuario = Auth::user();
             $idEmpresa = $datos['fk_idEmpresa'];

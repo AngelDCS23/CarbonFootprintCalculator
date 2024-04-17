@@ -40,8 +40,6 @@ class CreacionUserGratController extends Controller
             'password' => $hashed_password,
         ]);
 
-        
-
         $persona->empresa()->associate($empresa);
         $persona->save();
 
