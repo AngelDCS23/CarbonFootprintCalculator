@@ -520,3 +520,23 @@ form .datos_hotel{
     font-size: 16px;
 }
 
+/*INSERCCION DE DATOS EN HOTELES*/
+
+.caja_datos{
+    border: 2px solid var(--Azul_marino);
+}
+
+.caja_menu_lateral{
+    width: 10%;
+}
+
+.elemento_caja{
+    display: flex; /* Usa flexbox para el diseño */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 200px;
+    border-bottom: 2px solid var(--Azul_marino);
+    border-right: 2px solid var(--Azul_marino);
+    background-color: rgba(240, 248, 255, 0.836);
+}
+

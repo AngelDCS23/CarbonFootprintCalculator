@@ -10,7 +10,20 @@
             <a href="/hoteles">
                 <p>Completar</p>
             </a>
-        </div>            
+        </div>
+        <div class="caja_datos">
+            <div class="caja_menu_lateral">
+                <div class="elemento_caja">
+                    <p>Emisiones Directas</p>
+                </div>
+                <div class="elemento_caja">
+                    <p>Emisiones indirectas</p>
+                </div>
+                <div class="elemento_caja">
+                    <p>Otras emisiones</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
