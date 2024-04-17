@@ -24,9 +24,20 @@ $contenido = 1;
     
     <div class="menu90">
         <img src="{{asset('img/Logo.png')}}" alt="">
-        <a href="https://agendaur-cp191.wordpresstemporal.com/greenglobe_bck/">
-            <p>{{WebDatos::find($contenido)->cuerpo}}</p>
-        </a>
+        <div class="menu_derecha">
+            <div class="imagen_menu">
+                <a href="/login">
+                    <img class="menu_derecha_img" src="{{asset('img/iconos/usuario_Login.png')}}" alt="">
+                </a>
+            </div>
+            <div class="texto_menu">
+                <a href="https://agendaur-cp191.wordpresstemporal.com/greenglobe_bck/">
+                    <p>{{WebDatos::find($contenido)->cuerpo}}</p>
+                </a>
+            </div>
+            
+        </div>
+        
     </div>
    
     <div class="banner1_40">
@@ -40,6 +51,9 @@ $contenido = 1;
     @include('layout.footer')
 
     <script src="{{ asset('js/cambiar_bandera.js') }}"></script>
+    <script>
+
+    </script>
 </body>
 </html>
 

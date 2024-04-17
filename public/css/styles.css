@@ -32,6 +32,27 @@ a{
     justify-content: space-between;
     align-items: center;
 }
+.menu_derecha{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu_derecha_img{
+    width: 80% !important;
+}
+
+.divFotoMenu{
+    height: 100%;
+}
+
+.imagen_menu{
+    text-align: center;
+}
+
+.texto_menu{
+    width: 70%;
+}
 
 .menu90 img{
     width: 20%;

@@ -52,6 +52,10 @@ $contenido = 1;
                 <input type="text" name="correo" oninput="fadeLabel(this)">
                 <label class="fade-label">Correo electónico</label>
             </div>
+            <div class="datos">
+                <input type="password" name="password" oninput="fadeLabel(this)">
+                <label class="fade-label">Contraseña</label>
+            </div>
             <button class="boton_formulario" type="submit">Iniciar</button>
         </form>
     </div>
@@ -60,7 +64,7 @@ $contenido = 1;
         <img onclick="cambiarImagen()" src="{{asset('img/banderas/reino-unido.png')}}" alt="">
         <p>Green Globe Sostenibilidad y Proyectos Ambientales es una marca registrada. | <span><a href="/avisoLegal">Aviso legal</a></span> | <a href="/politicaProvacidad">Política de Privacidad</a> | <a href="/politicaCookies">Política de cookies</a></p>
     </div>
-    
+
     <script src="{{ asset('js/cambiar_bandera.js') }}"></script>
     <script src="{{ asset('js/mostrar_texto.js') }}"></script>
 </body>

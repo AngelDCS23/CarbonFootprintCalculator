@@ -32,6 +32,10 @@ Route::get('/creacionHotel', function () {
     return view('insercionHoteles.nuevoHotel');
 })->name('nuevoHotel');
 
+Route::get('/login', function () {
+    return view('login.login');
+})->name('login');
+
 Route::get('/hoteles', 'App\Http\Controllers\MostrarHotelesController@ListadoHoteles')->name('hotel');
 
 Route::get('/anios', 'App\Http\Controllers\AniosController@index')->name('anios.index');
@@ -44,3 +48,7 @@ Route::post('/guardar-datos', [CreacionUserGratController::class, 'almacenarDato
 
 use App\Http\Controllers\CreacionHotelController;
 Route::post('/guardarHotel', [CreacionHotelController::class, 'almacenarHotel'])->name('almacenarNuevoHotel');
+
+//RUTAS PARA REALIZAR PETICIONES A LA BD.
+use App\Http\Controllers\LoginController;
+Route::post('/comprobarUsuario',[LoginController::class, 'login'])->name('combrobarUser');
