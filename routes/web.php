@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AniosController;
-use App\Http\Controllers\pruebaController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -46,13 +44,21 @@ Route::get('/anios', 'App\Http\Controllers\AniosController@index')->name('anios.
 
 Route::get('/datosweb', 'App\Http\Controllers\WebDatosController@listarDatos')->name('datos.index');
 
-//RUTAS PARA GUARDAR DATOS EN LA BD.
+//RUTAS PARA GUARDAR DATOS EN LA BD
 use App\Http\Controllers\CreacionUserGratController;
 Route::post('/guardar-datos', [CreacionUserGratController::class, 'almacenarDatos'])->name('guardar.datos');
 
 use App\Http\Controllers\CreacionHotelController;
 Route::post('/guardarHotel', [CreacionHotelController::class, 'almacenarHotel'])->name('almacenarNuevoHotel');
 
-//RUTAS PARA REALIZAR PETICIONES A LA BD.
+//RUTAS PARA REALIZAR PETICIONES A LA BD
 use App\Http\Controllers\LoginController;
 Route::post('/comprobarUsuario',[LoginController::class, 'login'])->name('combrobarUser');
+
+//RUTAS PARA RECIBIR JSON (AJAX)
+use App\Http\Controllers\EmisionesDirectasController;
+Route::get('/emisiones', [EmisionesDirectasController::class, 'listadoNombres']);
+
+use App\Http\Controllers\subtiposedController;
+Route::get('/subtipos', [SubtiposedController::class, 'listadoSubtipos']);
+Route::post('/subtipos', [SubtiposedController::class, 'listadoSubtipos']);

@@ -7,11 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\EmpresaGrat;
 use App\Models\PersonaGrat;
 
-class CreacionUserGratController extends Controller
-{
-    public function almacenarDatos(Request $request)
-    {
-
+class CreacionUserGratController extends Controller{
+    public function almacenarDatos(Request $request){
         // Validamos que los datos que han introducido son válidos para meterlos en la base
         $request->validate([
             'nombre_empresa' => 'required|string|max:200',

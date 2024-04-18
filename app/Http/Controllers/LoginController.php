@@ -19,7 +19,7 @@ class LoginController extends Controller{
         $usuario = PersonaGrat::where('Correo', $credenciales['Correo'])->first();
         
         $datos = $usuario->toArray();
-
+        
 
         if ($usuario && Hash::check($credenciales['password'], $usuario->password)) {
             $usuario = Auth::user();

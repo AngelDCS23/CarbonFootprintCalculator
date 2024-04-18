@@ -298,7 +298,7 @@ form .datos{
 
 .datosEstudio{
     width: 100%;
-    background-color: rgba(240, 248, 255, 0.836);
+    background-color: rgba(240, 248, 255, 0.89);
 }
 
 .datosEstudio_90{
@@ -523,20 +523,160 @@ form .datos_hotel{
 /*INSERCCION DE DATOS EN HOTELES*/
 
 .caja_datos{
-    border: 2px solid var(--Azul_marino);
+    display: flex;
+    justify-content: space-between;
 }
 
 .caja_menu_lateral{
     width: 10%;
+    font-size: bolder;
 }
 
 .elemento_caja{
-    display: flex; /* Usa flexbox para el diseño */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    /*
     border-bottom: 2px solid var(--Azul_marino);
     border-right: 2px solid var(--Azul_marino);
     background-color: rgba(240, 248, 255, 0.836);
+    */
 }
 
+.caja_datos_hotel{
+    width: 85%;
+    border: 2px solid var(--Azul_marino);
+    border-radius: 7px;
+}
+
+.caja_datos_opciones{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
+.caja_datos_opciones img{
+    width: 50%;
+}
+
+.caja_datos_opciones_boton{
+    display: flex;
+    gap: 5px;
+    background-color: #a2d02d;
+    width: 200px;
+    width: fit-content;
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-weight: bolder;
+    margin: 0 10px;
+}
+
+.caja_datos_opciones_boton img{
+    width: 20px;
+}
+
+.caja_datos_opciones_boton a{
+    display: flex;
+    gap: 5px;
+}
+
+.margin{
+    margin: 0 10px;
+}
+
+.caja_datos_menu{
+    margin: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--Azul_marino);
+    font-size: bolder;
+}
+
+.caja_datos_menu p{
+    color: white !important;
+}
+
+/*POPUP*/
+.btn{
+    border: 0;
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    background-color: #a2d02d;
+    width: fit-content;
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-weight: bolder;
+    margin: 0 10px;
+    color: var(--Azul_marino);
+}
+
+.popup{
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 800px;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    color: var(--Azul_marino);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;;
+    border: 2px solid var(--Azul_marino);
+    border-top-left-radius: 0; /* Borde superior izquierdo redondeado */
+    border-top-right-radius: 0; /* Borde superior derecho redondeado */
+    border-bottom-left-radius: 15px; /* Borde inferior izquierdo no redondeado */
+    border-bottom-right-radius: 15px;
+}
+
+.mostrarPopup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.barra_superior_popup{
+    border-bottom: 2px solid var(--Azul_marino);
+    padding: 10px 2.5%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--Azul_marino);
+    font-size: 17px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.barra_superior_popup p{
+    color: white;
+}
+
+.barra_superior_popup img{
+    width: 16px;
+}
+
+.cuerpo_popup{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.cuerpo_popup h3{
+    text-align: left;
+    padding-top: 15px;
+}
+
+.fila_datos_popup{
+    display: flex;
+    padding-top: 20px;
+}
+
+.fila_datos_popup label{
+    font-weight: bolder;
+    color: var(--Azul_marino);
+}
+
+.fila_datos_popup select,option{
+    color: var(--Azul_marino);
+    font-weight: bold;
+}
