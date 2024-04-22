@@ -8,8 +8,8 @@ class mostrarHotelesController extends Controller
 {
     public function ListadoHoteles(Request $request)
     {
-        $idEmpresa = $request->session()->get('idEmpresa');
-        $hoteles = hoteles_usuario::where('fk_idempresa', $idEmpresa)->get();
+        $idInforme = $request->session()->get('idInforme');
+        $hoteles = hoteles_usuario::where('fk_idInforme', $idInforme)->get();
         return view('insercionHoteles.hoteles', compact('hoteles'));
     }
 }

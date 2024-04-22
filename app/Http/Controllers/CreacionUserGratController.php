@@ -43,6 +43,7 @@ class CreacionUserGratController extends Controller{
         $datos = $persona->toArray() + $empresa->toArray();
 
         //Almaceno datos para enviarlos a las otras vistas
+        $request->session()->put('idUsuario', $persona->id);
         $request->session()->put('nombre_contacto', $request->input('nombre_contacto'));
         $request->session()->put('num_hoteles', $request->input('num_hoteles'));
         $request->session()->put('fk_idEmpresa', $empresa->id);

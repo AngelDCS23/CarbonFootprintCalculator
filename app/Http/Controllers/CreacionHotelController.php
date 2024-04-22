@@ -17,9 +17,7 @@ class CreacionHotelController extends Controller
         ]);
 
         $empresa = EmpresaGrat::find($request->session()->get('idEmpresa'));
-
-        // $allSessions = session()->all();
-        // dd($allSessions);
+        $informe = session('idInforme');
 
         $hotel = hoteles_usuario::create([
             'Nombre' => $request -> Nombre,
@@ -27,6 +25,7 @@ class CreacionHotelController extends Controller
             'Pais' => $request -> Pais,
             'Numero_camas' => $request -> Numero_camas,
             'fk_idEmpresa' => $empresa->id,
+            'fk_idInforme' => $informe,
         ]);
         
         $hotel->empresa()->associate($empresa);

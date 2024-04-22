@@ -30,6 +30,10 @@ Route::get('/creacionHotel', function () {
     return view('insercionHoteles.nuevoHotel');
 })->name('nuevoHotel');
 
+Route::get('/creacionInforme', function () {
+    return view('informes.nuevoInforme');
+})->name('nuevoInforme');
+
 Route::get('/login', function () {
     return view('login.login');
 })->name('login');
@@ -44,12 +48,17 @@ Route::get('/anios', 'App\Http\Controllers\AniosController@index')->name('anios.
 
 Route::get('/datosweb', 'App\Http\Controllers\WebDatosController@listarDatos')->name('datos.index');
 
+Route::get('/listadoInformes','App\Http\Controllers\informeController@ListarInformes')->name('listadoInformes');
+
 //RUTAS PARA GUARDAR DATOS EN LA BD
 use App\Http\Controllers\CreacionUserGratController;
 Route::post('/guardar-datos', [CreacionUserGratController::class, 'almacenarDatos'])->name('guardar.datos');
 
 use App\Http\Controllers\CreacionHotelController;
 Route::post('/guardarHotel', [CreacionHotelController::class, 'almacenarHotel'])->name('almacenarNuevoHotel');
+
+use App\Http\Controllers\InformeController;
+Route::post('/guardarInforme', [InformeController::class,'AlmacenarInforme'])->name('almacenarInforme');
 
 //RUTAS PARA REALIZAR PETICIONES A LA BD
 use App\Http\Controllers\LoginController;
@@ -62,3 +71,6 @@ Route::get('/emisiones', [EmisionesDirectasController::class, 'listadoNombres'])
 use App\Http\Controllers\subtiposedController;
 Route::get('/subtipos', [SubtiposedController::class, 'listadoSubtipos']);
 Route::post('/subtipos', [SubtiposedController::class, 'listadoSubtipos']);
+
+//Route::get('/Obtener',[InformeController::class,'ObtenerId']);
+Route::post('/Obtener',[InformeController::class,'ObtenerId']);
