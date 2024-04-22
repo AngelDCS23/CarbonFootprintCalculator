@@ -16,7 +16,10 @@ class CreacionHotelController extends Controller
             'Numero_camas' => 'required|integer',
         ]);
 
-        $empresa = EmpresaGrat::find($request->session()->get('fk_idEmpresa'));
+        $empresa = EmpresaGrat::find($request->session()->get('idEmpresa'));
+
+        // $allSessions = session()->all();
+        // dd($allSessions);
 
         $hotel = hoteles_usuario::create([
             'Nombre' => $request -> Nombre,
@@ -25,11 +28,11 @@ class CreacionHotelController extends Controller
             'Numero_camas' => $request -> Numero_camas,
             'fk_idEmpresa' => $empresa->id,
         ]);
-
+        
         $hotel->empresa()->associate($empresa);
         $hotel->save();
 
-        return redirect()->route('hotel');
-        //return redirect()->route('hotel', ['idHotel' => $empresa->id]);
+        //return redirect()->route('hotel');
+        return redirect()->route('hotel', ['idHotel' => $empresa->id]);
     }
 }

@@ -3,7 +3,7 @@ fetch('/emisiones')
     .then(data => {
         const select = document.getElementById('tipo');
         const selectSubtipo = document.getElementById('subtipo')
-        
+
         data.forEach(emision => {
             const option = document.createElement('option');
             option.value = emision.Nombre;
@@ -12,7 +12,7 @@ fetch('/emisiones')
         });
 
         // Agregar evento change al select
-        selectSubtipo.addEventListener('change', function() {
+        select.addEventListener('change', function() {
             // Obtener el nombre seleccionado
             const selectedNombre = this.value;
 
@@ -21,15 +21,16 @@ fetch('/emisiones')
 
             // Obtener el id asociado al nombre seleccionado
             const selectedId = selectedObj ? selectedObj.id : null;
-
             // Realizar una solicitud AJAX para obtener los subtipos
+            console.log('Token CSRF:', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
             fetch('/subtipos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
-                body: JSON.stringify({ id: selectedId }) // Enviar el id seleccionado al controlador
+                body: JSON.stringify({ id: selectedId }) //Enviar el id seleccionado al controlador
             })
             .then(response => response.json())
             .then(data => {
@@ -37,14 +38,13 @@ fetch('/emisiones')
                     const option = document.createElement('option');
                     option.value = subtipo.Nombre;
                     option.textContent = subtipo.Nombre;
-                    select.appendChild(option);
+                    selectSubtipo.appendChild(option);
                 });
             })
             .catch(error => {
                 console.error('Error al obtener los subtipos:', error);
             });
         });
-
 
     })
     .catch(error => {

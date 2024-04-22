@@ -13,13 +13,13 @@
         </div>
         <div class="caja_datos">
             <div class="caja_menu_lateral">
-                <div class="elemento_caja">
+                <div class="elemento_caja" id="emi" onclick="marcarEmi()">
                     <h3>Emisiones Directas</h3>
                 </div>
-                <div class="elemento_caja">
+                <div class="elemento_caja" id="emi">
                     <h3>Emisiones indirectas</h3>
                 </div>
-                <div class="elemento_caja">
+                <div class="elemento_caja" id="emi">
                     <h3>Otras emisiones</h3>
                 </div>
             </div>
@@ -85,4 +85,7 @@
 
 <script src="{{ asset('js/popupHotel.js') }}"></script>
 <script src="{{ asset('js/listar_nombres.js') }}"></script>
+<script src="{{ asset('js/tipo_emi.js') }}"></script>
+
+
 @endsection

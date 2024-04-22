@@ -17,16 +17,21 @@ class LoginController extends Controller{
 
         \Illuminate\Support\Facades\Log::info('Credenciales recibidas:', $credenciales);
         $usuario = PersonaGrat::where('Correo', $credenciales['Correo'])->first();
-        
         $datos = $usuario->toArray();
         
-
         if ($usuario && Hash::check($credenciales['password'], $usuario->password)) {
             $usuario = Auth::user();
+
             $idEmpresa = $datos['fk_idEmpresa'];
+            $nombre = $datos['Nombre_Cont'];
+            session()->put('idEmpresa', $idEmpresa);
+            session()->put('nombre', $nombre);
+
             return redirect()->route('hotel', ['idHotel' => $idEmpresa]);
         }else{
             return redirect()->back()->withErrors(['error' => 'Credenciales incorrectas']);
         }
+
+        
     }
 }
