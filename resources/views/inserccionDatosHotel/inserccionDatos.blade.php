@@ -41,19 +41,25 @@
 
                 <div id="contenido_indirectas" style="display: none">
                     <div class="caja_datos_opciones" >
-                        <button type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
+                        <button style="display: none" type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
                     </div>
                     <div class="caja_datos_menu">
-                        <p>Nombre</p>
+                        <p>Comercializadora</p>
                         <p>Cantidad</p>
                         <p>Unidad</p>
                         <p>Impacto ambiental (CO2e)</p>
                     </div>
                     <div class="datos_usuario">   
+                        <select name="comercializadoras" id="comerci">
+                        
+                        </select>   
+                        <input type="number" id="cantidad">
+                        <input type="text" id="unidad" value="kwh" readonly>
+                        <input type="text">
                     </div>
                 </div>
 
-                <div id="contenido_otras" style="display: none transition:">
+                <div id="contenido_otras" style="display: none">
                     <div class="caja_datos_opciones">
                         <button type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
                     </div>
@@ -64,7 +70,7 @@
                         <p>Unidad</p>
                         <p>Impacto ambiental (CO2e)</p>
                     </div>
-                    <div class="datos_usuario">   
+                    <div class="datos_usuario">
                     </div>
             </div>
         </div>
@@ -113,7 +119,7 @@
 <script src="{{ asset('js/selector_menu.js') }}"></script>
 <script src="{{ asset('js/popupHotel.js') }}"></script>
 <script src="{{ asset('js/listar_nombres.js') }}"></script>
-<script src="{{ asset('js/tipo_emi.js') }}"></script>
+<script src="{{ asset('js/listar_comercializadoras.js') }}"></script>
 
 
 @endsection

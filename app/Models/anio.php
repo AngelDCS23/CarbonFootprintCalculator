@@ -10,6 +10,8 @@ class Anio extends Model
 {
     protected $table = 'anios';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'Anio',
     ];

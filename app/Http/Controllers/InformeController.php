@@ -52,6 +52,7 @@ class InformeController extends Controller{
         $año = $request->input('año');
 
         $usuario = session('idUsuario');
+        session()->put('añoInforme', $año);
 
         if ($usuario == null) {
             $usuario = session('idusu');

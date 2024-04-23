@@ -432,6 +432,7 @@ form .datos{
 
 .hotel_uni h2{
     margin-right: 10%;
+    width: 30%;
 }
 
 .hotel_uni img{
@@ -606,6 +607,21 @@ form .datos_hotel{
 
 .caja_datos_menu p{
     color: white !important;
+    width: 20%;
+}
+
+.datos_usuario{
+    display: flex;
+    justify-content: space-between;
+}
+
+.datos_usuario input,select{
+    width: 20%;
+    max-height: 34px;
+    margin: 20px;
+    padding: 1px;
+    color: var(--Azul_marino) !important;
+    font-weight: bold;
 }
 
 /*POPUP*/

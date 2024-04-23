@@ -68,6 +68,9 @@ Route::post('/comprobarUsuario',[LoginController::class, 'login'])->name('combro
 use App\Http\Controllers\EmisionesDirectasController;
 Route::get('/emisiones', [EmisionesDirectasController::class, 'listadoNombres']);
 
+use App\Http\Controllers\ComercializadorasController;
+Route::get('/comercializadoras', [ComercializadorasController::class, 'ListarComer']);
+
 use App\Http\Controllers\subtiposedController;
 Route::get('/subtipos', [SubtiposedController::class, 'listadoSubtipos']);
 Route::post('/subtipos', [SubtiposedController::class, 'listadoSubtipos']);
