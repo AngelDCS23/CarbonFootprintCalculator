@@ -31,7 +31,6 @@ class InformeController extends Controller{
     session()->put('usu', $usuario);
     session()->put('empre', $empresa);
 
-    //return view ('informes.listadoInformes');
     return redirect()->route('listadoInformes');
     }
 
@@ -44,27 +43,27 @@ class InformeController extends Controller{
         }
 
         $informes = Informe::where('fk_idPersona', $usuario)->get();
-        
+
         return view ('informes.listadoInformes',compact('informes'));
     }
 
     public function ObtenerId(Request $request) {
         $nombre = $request->input('nombre');
         $año = $request->input('año');
-    
+
         $usuario = session('idUsuario');
-    
+
         if ($usuario == null) {
             $usuario = session('idusu');
         }
-    
+
         $informe = Informe::where('nombre', $nombre)
                           ->where('año', $año)
                           ->where('fk_idPersona', $usuario)
                           ->first();
-    
+
         $idInforme = $informe->id;
-           
+
         session()->put('idInforme', $idInforme);
         }
 }

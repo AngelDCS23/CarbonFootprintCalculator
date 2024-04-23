@@ -11,34 +11,61 @@
                 <p>Completar</p>
             </a>
         </div>
-        <div class="caja_datos">
+        <div class="caja_datos" id="emisiones_directas">
             <div class="caja_menu_lateral">
-                <div class="elemento_caja" id="emi" onclick="marcarEmi()">
+                <div class="elemento_caja" id="emi_directas" onclick="mostrarContenido('directas', this)">
                     <h3>Emisiones Directas</h3>
                 </div>
-                <div class="elemento_caja" id="emi">
+                <div class="elemento_caja" id="emi_indirecta" onclick="mostrarContenido('indirectas', this)">
                     <h3>Emisiones indirectas</h3>
                 </div>
-                <div class="elemento_caja" id="emi">
+                <div class="elemento_caja" id="otras_emisiones" onclick="mostrarContenido('otras', this)">
                     <h3>Otras emisiones</h3>
                 </div>
             </div>
-            <div class="caja_datos_hotel">
 
-                <div class="caja_datos_opciones">
-                    <button type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
+            <div class="caja_datos_hotel" id="contenido_cambiante">
+                <div id="contenido_directas" style="display: none">
+                    <div class="caja_datos_opciones">
+                        <button type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
+                    </div>
+    
+                    <div class="caja_datos_menu">
+                        <p>Nombre</p>
+                        <p>Cantidad</p>
+                        <p>Unidad</p>
+                        <p>Impacto ambiental (CO2e)</p>
+                    </div>
+                    <div class="datos_usuario"></div>
                 </div>
 
-                <div class="caja_datos_menu">
-                    <p>Nombre</p>
-                    <p>Cantidad</p>
-                    <p>Unidad</p>
-                    <p>Impacto ambiental (CO2e)</p>
+                <div id="contenido_indirectas" style="display: none">
+                    <div class="caja_datos_opciones" >
+                        <button type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
+                    </div>
+                    <div class="caja_datos_menu">
+                        <p>Nombre</p>
+                        <p>Cantidad</p>
+                        <p>Unidad</p>
+                        <p>Impacto ambiental (CO2e)</p>
+                    </div>
+                    <div class="datos_usuario">   
+                    </div>
                 </div>
 
-                <div class="datos_usuario">
-                    
-                </div>
+                <div id="contenido_otras" style="display: none transition:">
+                    <div class="caja_datos_opciones">
+                        <button type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
+                    </div>
+    
+                    <div class="caja_datos_menu">
+                        <p>Nombre</p>
+                        <p>Cantidad</p>
+                        <p>Unidad</p>
+                        <p>Impacto ambiental (CO2e)</p>
+                    </div>
+                    <div class="datos_usuario">   
+                    </div>
             </div>
         </div>
     </div>
@@ -83,6 +110,7 @@
     </div>
 </div>
 
+<script src="{{ asset('js/selector_menu.js') }}"></script>
 <script src="{{ asset('js/popupHotel.js') }}"></script>
 <script src="{{ asset('js/listar_nombres.js') }}"></script>
 <script src="{{ asset('js/tipo_emi.js') }}"></script>

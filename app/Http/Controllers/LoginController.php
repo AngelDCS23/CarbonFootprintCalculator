@@ -19,8 +19,6 @@ class LoginController extends Controller{
         $usuario = PersonaGrat::where('Correo', $credenciales['Correo'])->first();
         $datos = $usuario->toArray();
 
-
-        
         if ($usuario && Hash::check($credenciales['password'], $usuario->password)) {
             $usuario = Auth::user();
 
@@ -31,12 +29,9 @@ class LoginController extends Controller{
             session()->put('nombre', $nombre);
             session()->put('idusu', $idUsuario);
 
-            //return view ('informes.listadoInformes');
             return redirect()->route('listadoInformes');
         }else{
             return redirect()->back()->withErrors(['error' => 'Credenciales incorrectas']);
         }
-
-        
     }
 }
