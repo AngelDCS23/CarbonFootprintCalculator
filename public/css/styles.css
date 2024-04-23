@@ -702,7 +702,7 @@ form .datos_hotel{
     color: var(--Azul_marino);
 }
 
-.fila_datos_popup select,option{
+.fila_datos_popup select,option,input{
     color: var(--Azul_marino);
     font-weight: bold;
 }

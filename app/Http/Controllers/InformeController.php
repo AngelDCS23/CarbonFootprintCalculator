@@ -66,5 +66,5 @@ class InformeController extends Controller{
         $idInforme = $informe->id;
 
         session()->put('idInforme', $idInforme);
-        }
+    }
 }

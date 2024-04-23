@@ -15,7 +15,6 @@ class LoginController extends Controller{
             'password' => 'required|string|max:45',
         ]);
 
-        \Illuminate\Support\Facades\Log::info('Credenciales recibidas:', $credenciales);
         $usuario = PersonaGrat::where('Correo', $credenciales['Correo'])->first();
         $datos = $usuario->toArray();
 

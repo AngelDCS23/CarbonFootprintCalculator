@@ -71,6 +71,7 @@
                         <p>Impacto ambiental (CO2e)</p>
                     </div>
                     <div class="datos_usuario">
+
                     </div>
             </div>
         </div>
@@ -79,7 +80,7 @@
     <div class="popup" id="popup">
         <div class="barra_superior_popup">
             <p>Añadir</p>
-            <img onclick="OcultarPopup()" src="{{asset('img/iconos/cerrar.png')}}" alt="">
+            <img onclick="OcultarPopup(); LimpiarSelectores()" src="{{asset('img/iconos/cerrar.png')}}" alt="">
         </div>
 
         <div class="cuerpo_popup">
@@ -92,6 +93,7 @@
                     
                 </select>
             </div>
+            
             <div class="fila_datos_popup">
                 <label>Subtipo</label>
                 <select id="subtipo" name="subtipo">
@@ -104,15 +106,16 @@
 
             <div class="fila_datos_popup">
                 <label>Cantidad</label>
-                <input type="text">
+                <input type="number" id="cantidadAña" name="cantidadAña">
             </div>
+
             <div class="fila_datos_popup">
                 <label>Unidad</label>
-                <input type="text">
+                <input type="text" id="unidadAña">
             </div>
 
         </div>
-        <button type="button" onclick="OcultarPopup()" class="">Cerrar</button>
+        <button type="button" onclick="OcultarPopup(); LimpiarSelectores(); crearRegistro()" class="btn">Añadir</button>
     </div>
 </div>
 
@@ -120,6 +123,7 @@
 <script src="{{ asset('js/popupHotel.js') }}"></script>
 <script src="{{ asset('js/listar_nombres.js') }}"></script>
 <script src="{{ asset('js/listar_comercializadoras.js') }}"></script>
-
+<script src="{{ asset('js/limpiar_selectores.js') }}"></script>
+<script src="{{ asset('js/obtenerRegistrosYAñadirLista.js') }}"></script>
 
 @endsection

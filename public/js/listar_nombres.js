@@ -13,6 +13,7 @@ fetch('/emisiones')
 
         // Agregar evento change al select
         select.addEventListener('change', function() {
+            selectSubtipo.innerHTML = '';
             // Obtener el nombre seleccionado
             const selectedNombre = this.value;
 
@@ -22,8 +23,6 @@ fetch('/emisiones')
             // Obtener el id asociado al nombre seleccionado
             const selectedId = selectedObj ? selectedObj.id : null;
             // Realizar una solicitud AJAX para obtener los subtipos
-            console.log('Token CSRF:', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-
             fetch('/subtipos', {
                 method: 'POST',
                 headers: {
