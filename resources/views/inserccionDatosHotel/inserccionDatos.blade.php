@@ -17,10 +17,10 @@
                     <h3>Emisiones Directas</h3>
                 </div>
                 <div class="elemento_caja" id="emi_indirecta" onclick="mostrarContenido('indirectas', this)">
-                    <h3>Emisiones indirectas</h3>
+                    <h3>Consumo energético</h3>
                 </div>
                 <div class="elemento_caja" id="otras_emisiones" onclick="mostrarContenido('otras', this)">
-                    <h3>Otras emisiones</h3>
+                    <h3>Emisiones indirectas</h3>
                 </div>
             </div>
 
@@ -31,10 +31,10 @@
                     </div>
     
                     <div class="caja_datos_menu">
+                        <p>Tipo</p>
                         <p>Nombre</p>
                         <p>Cantidad</p>
                         <p>Unidad</p>
-                        <p>Impacto ambiental (CO2e)</p>
                     </div>
                     <div class="datos_usuario"></div>
                 </div>
@@ -87,35 +87,38 @@
             <h3>Información</h3>
             <hr>
 
-            <div class="fila_datos_popup">
-                <label>Tipo:</label>
-                <select id="tipo" name="tipo">
+            <form action="POST">
+                <div class="fila_datos_popup">
+                    <label>Tipo:</label>
+                    <select id="tipo" name="tipo">
+                        
+                    </select>
+                </div>
+    
+                <div class="fila_datos_popup">
+                    <label>Subtipo</label>
+                    <select id="subtipo" name="subtipo">
+    
+                    </select>
+                </div>
+    
+                <h3>Información</h3>
+                <hr>
+    
+                <div class="fila_datos_popup">
+                    <label>Cantidad</label>
+                    <input type="text" id="cantidadAña" required>
                     
-                </select>
-            </div>
-            
-            <div class="fila_datos_popup">
-                <label>Subtipo</label>
-                <select id="subtipo" name="subtipo">
-
-                </select>
-            </div>
-
-            <h3>Información</h3>
-            <hr>
-
-            <div class="fila_datos_popup">
-                <label>Cantidad</label>
-                <input type="number" id="cantidadAña" name="cantidadAña">
-            </div>
-
-            <div class="fila_datos_popup">
-                <label>Unidad</label>
-                <input type="text" id="unidadAña">
-            </div>
-
+                </div>
+    
+                <div class="fila_datos_popup">
+                    <label>Unidad</label>
+                    <input type="text" id="unidadAña">
+                </div>
+            </form>
         </div>
-        <button type="button" onclick="OcultarPopup(); LimpiarSelectores(); crearRegistro()" class="btn">Añadir</button>
+        {{-- LimpiarSelectores();  TENGO QUE AÑADIR ESTO AL ONCLICK CUANDO FUNCIONE LO OTRO--}}
+        <button type="button" onclick="OcultarPopup(); crearRegistro()" class="btn">Añadir</button>
     </div>
 </div>
 

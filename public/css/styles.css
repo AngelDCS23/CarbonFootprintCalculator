@@ -156,6 +156,7 @@ form .datos{
     border: none;
     background: none;
     outline: none;
+    color: white;
 }
 
 .datos label{
@@ -603,6 +604,7 @@ form .datos_hotel{
     padding: 20px;
     background-color: var(--Azul_marino);
     font-size: bolder;
+    text-align: center;
 }
 
 .caja_datos_menu p{
@@ -611,8 +613,9 @@ form .datos_hotel{
 }
 
 .datos_usuario{
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
+    width: 100%;
 }
 
 .datos_usuario input,select{
@@ -621,6 +624,21 @@ form .datos_hotel{
     margin: 20px;
     padding: 1px;
     color: var(--Azul_marino) !important;
+    font-weight: bold;
+}
+
+.datos_añadidos{
+    display: flex;
+    margin: 0 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    /* border-top: 2px solid var(--Azul_marino);
+    border-bottom: 2px solid var(--Azul_marino); */
+}
+
+.datos_añadidos p{
+    width: 25%;
     font-weight: bold;
 }
 
