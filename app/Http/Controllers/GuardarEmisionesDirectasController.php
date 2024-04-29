@@ -15,10 +15,9 @@ class GuardarEmisionesDirectasController extends Controller{
         $subtipo = $request->subtipo;
         $cantidad = $request->cantidad;
 
-        if($tipo = ''){
+        if($tipo = 'Consumo grupo electrógeno'){
             
         }
-
     }
 }
 

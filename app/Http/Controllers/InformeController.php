@@ -64,7 +64,9 @@ class InformeController extends Controller{
                           ->first();
 
         $idInforme = $informe->id;
+        $AñoInforme = $informe->año;
 
         session()->put('idInforme', $idInforme);
+        session()->put('añoInforme', $AñoInforme);
     }
 }

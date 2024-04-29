@@ -10,7 +10,6 @@ class ComercializadorasController extends Controller{
 
     public function ObtenerIdAño($año){
         $anio = anio::where('Anio', $año)->first();
-
         //Comprobante de que la vriable no está vacía.
         if ($anio) {
             return $anio->id;
