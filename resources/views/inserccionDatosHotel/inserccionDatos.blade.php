@@ -73,6 +73,8 @@
                     <div class="datos_usuario">
 
                     </div>
+                    <a href="/prueba" class="btn">Prueba</a>
+                    <a href="/ObtenerHotel">Prueba2</a>
             </div>
         </div>
     </div>
@@ -119,6 +121,9 @@
         </div>
         {{-- LimpiarSelectores();  TENGO QUE AÑADIR ESTO AL ONCLICK CUANDO FUNCIONE LO OTRO--}}
         <button type="button" onclick="OcultarPopup(); crearRegistro()" class="btn">Añadir</button>
+
+
+
     </div>
 </div>
 

@@ -69,6 +69,8 @@ use App\Http\Controllers\EmisionesDirectasController;
 Route::get('/emisiones', [EmisionesDirectasController::class, 'listadoNombres']);
 
 use App\Http\Controllers\ComercializadorasController;
+use App\Http\Controllers\GuardarEmisionesDirectasController;
+
 Route::get('/comercializadoras', [ComercializadorasController::class, 'ListarComer']);
 
 use App\Http\Controllers\subtiposedController;
@@ -77,3 +79,14 @@ Route::post('/subtipos', [SubtiposedController::class, 'listadoSubtipos']);
 
 //Route::get('/Obtener',[InformeController::class,'ObtenerId']);
 Route::post('/Obtener',[InformeController::class,'ObtenerId']);
+
+use App\Http\Controllers\ObtenerIdHotelController;
+
+Route::get('/ObtenerHotel', [GuardarEmisionesDirectasController::class,'ObtenerReferencia']);
+Route::post('/ObtenerHotel', [GuardarEmisionesDirectasController::class,'ObtenerReferencia']);
+
+/*PRUEBAS*/
+
+Route::get('/prueba', function () {
+    return view('prueba');
+})->name('prueba');

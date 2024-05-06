@@ -18,12 +18,13 @@
                         <p>Dirección: {{ $hotel->Direccion }}</p>
                         <p>País: {{ $hotel->Pais }}</p>
                         <a href="/datosHotel">
-                            <img src="{{asset('img/iconos/flecha.png')}}" alt="">
+                            <img src="{{asset('img/iconos/flecha.png')}}" alt="" onclick="enviarIdHotel('{{$hotel->id}}')">
                         </a>
                     </div>
                 </div>
                 @endforeach
-            
         </div>
     </div>
+
+    <script src="{{ asset('js/obtenerIdHotel.js') }}"></script>
 @endsection

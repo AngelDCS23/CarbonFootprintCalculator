@@ -1,15 +1,14 @@
-function enviarDatos(nombre, año) {
-    console.log("Nombre:", nombre, " Año:", año);
+function enviarIdHotel(id){
+    console.log("(DESDE JAVASCRIPT)ID del hotel:", id);
     var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    fetch('/Obtener', {
+    fetch('/ObtenerHotel', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': token
         },
         body: JSON.stringify({
-            nombre: nombre,
-            año: año
+            id: id
         })
     })
     .then(response => {
