@@ -89,7 +89,7 @@
             <h3>Información</h3>
             <hr>
 
-            <form action="POST">
+            <form action="{{route('guardarEmisionDirec')}}" method="POST">
                 <div class="fila_datos_popup">
                     <label>Tipo:</label>
                     <select id="tipo" name="tipo">

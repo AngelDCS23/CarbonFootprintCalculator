@@ -82,10 +82,15 @@ Route::post('/Obtener',[InformeController::class,'ObtenerId']);
 
 use App\Http\Controllers\ObtenerIdHotelController;
 
-Route::get('/ObtenerHotel', [GuardarEmisionesDirectasController::class,'ObtenerReferencia']);
-Route::post('/ObtenerHotel', [GuardarEmisionesDirectasController::class,'ObtenerReferencia']);
+Route::get('/ObtenerHotel', [ObtenerIdHotelController::class,'ObtenerIdHotel']);
+Route::post('/ObtenerHotel', [ObtenerIdHotelController::class,'ObtenerIdHotel']);
+
+Route::post('/guardarEmiDirect', [GuardarEmisionesDirectasController::class,'almacenarEMIDirectas'])->name('guardarEmisionDirec');
+Route::get('/guardarEmiDirect', [GuardarEmisionesDirectasController::class,'almacenarEMIDirectas']);
 
 /*PRUEBAS*/
+
+Route::post('/envioEmiDirectas', [GuardarEmisionesDirectasController::class,'almacenarEMIDirectas'])->name('guardarEmisionDirec');
 
 Route::get('/prueba', function () {
     return view('prueba');

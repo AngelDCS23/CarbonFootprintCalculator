@@ -28,44 +28,76 @@ class GuardarEmisionesDirectasController extends Controller{
         //Log:info($idEmiConsumoVehi);
         $idEmiFugitivas = EmisionDirecta::where('fk_idEmisiones_Fugitivas', $idEmiDirec)->value('id');
         //Log:info($idEmiFugitivas);
-
     }
-    // public function ObtenerIdEmiAño(){
-    //     $idHotel = session()->get("idHotel");
-    //     Log::info('id Hotel:'. $idHotel);
-    //     $idEmiAño = EmisionesAño::where('fk_idHotel', $idHotel)->get('id');
-    //     Log::info($idEmiAño);
-    //     return $idEmiAño;
-    // }
-    // public function ObtenerIdEmiIndirec(){
-    //     $idEmiAño = $this->ObtenerIdEmiAño();
-    //     Log::info('id Emision por año'. $idEmiAño);
-    //     $idEmiIndirec = EmisionesIndirectasUsuario::where('id', $idEmiAño)->get('id');
-    //     return $idEmiIndirec;
-    // }
-    // public function ObtenerEmiDirec(){
-    //     $idEmiAño = $this->ObtenerIdEmiAño();
-    //     $idEmiDirec = emisionesDirectas::where('id', $idEmiAño)->get();
-    //     return $idEmiDirec;
-    // }
-    // public function ObtenerConsumoVehi(){
-    //     $idEmiDirect = $this->ObtenerEmiDirec();
-    //     $idEmiConsumoVehi = ConsumoVehiculoUsuario::where('fk_idEmisiones_Directas', $idEmiDirect)->get();
-    //     return $idEmiConsumoVehi;
-    // }
-    // public function ObtenerEmiFugitivas(){
-    //     $idEmiDirect = $this->ObtenerEmiDirec();
-    //     $idEmiFugitivas = emisionesDirectas::where('fk_idEmisiones_Fugitivas', $idEmiDirect)->get();
-    //     return $idEmiFugitivas; 
-    // }
-    // public function almacenarEMIDirectas(request $request){
-    //     $tipo = $request->tipo;
-    //     $subtipo = $request->subtipo;
-    //     $cantidad = $request->cantidad;
-    //     if($tipo = 'Consumo grupo electrógeno'){
-            
-    //     }
-    // }
+
+    public function ObtenerIdEmiAño(){
+        $idHotel = session()->get("idHotel");
+        $idEmiAño = EmisionesAño::where('fk_idHotel', $idHotel)->value('id');
+        return $idEmiAño;
+    }
+
+    public function ObtenerIdEmiIndirec(){
+        $idHotel = session()->get("idHotel");
+        $idEmiIndirec = EmisionesAño::where('fk_idHotel', $idHotel)->value('fk_idEmisionesIndirectas');
+        return $idEmiIndirec;
+    }
+    public function ObtenerEmiDirec($idHotel){
+        $idEmiDirec = EmisionesAño::where('fk_idHotel', $idHotel)->value('fk_idEmisiones_Directas');
+        return $idEmiDirec;
+    }
+
+    public function ObtenerConsumoVehi(){
+        $idHotel = session()->get("IdHotel");
+        $idEmiDirect = $this->ObtenerEmiDirec($idHotel);
+        $idEmiConsumoVehi = ConsumoVehiculoUsuario::where('fk_idEmisiones_Directas', $idEmiDirect)->value('id');
+        return $idEmiConsumoVehi;
+    }
+
+    public function ObtenerEmiFugitivas($idHotel){
+        $idEmiDirect = $this->ObtenerEmiDirec($idHotel);
+        $idEmiFugitivas = EmisionDirecta::where('fk_idEmisiones_Fugitivas', $idEmiDirect)->value('fk_idEmisiones_Fugitivas');
+        return $idEmiFugitivas; 
+    }
+    
+    public function almacenarEMIDirectas(request $request){
+        $tipo = $request->tipo;
+        $subtipo = $request->subtipo;
+        $cantidad = $request->cantidad;
+        $idHotel = session()->get("IdHotel");
+
+        //Con esto obtengo el registro donde voy a almacenar el resultado
+        $emiDirec = EmisionDirecta::find($this->ObtenerEmiDirec($idHotel));
+        $idEmiDirec = $emiDirec->id;
+        //Obtengo el id de las emisiones Fugitivas asociadas a las emisiones directas
+        $idEmiFugi = $emiDirec->fk_idEmisiones_Fugitivas;
+        //Obtengo el registro completo de dichas emisiones Fugitivas
+        $emiFugi = EmisionFugitivaGasProduccion::find($idEmiFugi);
+        //NO TENGO NI IDEA DE QUE ESTOY HACIENDO AQUÍ
+        $ConVehiculos = ConsumoVehiculoUsuario::where('fk_idEmisiones_Directas', $idEmiDirec);
+        log::info($ConVehiculos);
+
+        if($tipo == 'Consumo grupo electrógeno'){
+            $emiDirec->update([
+                'Consumo_grupo_electrogeno' => $cantidad,
+            ]);
+        }else if($tipo == 'Emision recarga extintores CO2'){
+            $emiDirec->update([ 
+            'Recargas_Extintores' => $cantidad
+            ]); 
+        }else if($tipo == 'Consumo gas natural'){
+            $emiDirec->update([
+                'Consumo_GasNatural' => $cantidad   
+            ]);
+        }else if($tipo == 'Emisiones fugitivas'){
+            $emiFugi->update([
+                $subtipo => $cantidad,
+            ]);
+        }else if($tipo == 'Vehículos propios del hotel'){
+            $ConVehiculos->update([
+                $subtipo => $cantidad,
+            ]);
+        }
+    }
     
 }
 
