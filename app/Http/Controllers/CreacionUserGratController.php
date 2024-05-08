@@ -51,7 +51,9 @@ class CreacionUserGratController extends Controller{
         //$request->session()->put('datos',$datos);
 
         // Redirigir al usuario al controlador con el ID del hotel como parámetro en la URL
-        return redirect()->route('hotel', ['idHotel' => $empresa->id]);
+        //return redirect()->route('hotel', ['idHotel' => $empresa->id]);
+        //return redirect()->route('hotel', ['idHotel' => $empresa->id]);
+        return redirect()->route('home');
 
     }
     public function listarDatos(){

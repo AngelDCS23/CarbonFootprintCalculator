@@ -10,12 +10,12 @@ class ConsumoVehiculoUsuario extends Model
 
     protected $fillable = [
         'fk_idEmisiones_Directas',
-        'Turismos',
-        'Furgonetas_furgones',
-        'Camiones_autobuses',
-        'Ciclomotores_motocicletas',
+        'Turismos(M1)',
+        'Furgonetas y furgones (N2,N3,M2,M3)',
+        'Camiones y autobuses (N2,N3,M2,M3)',
+        'Ciclomotores y motocicletas (L)',
     ];
-
+    
     public $timestamps = false;
 
     public function emisionesDirectas(){

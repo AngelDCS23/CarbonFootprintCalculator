@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConsumoMaquinariaUsuario;
 use App\Models\ConsumoVehiculoUsuario;
 use Illuminate\Http\Request;
 use App\Models\hoteles_usuario;
@@ -10,6 +11,7 @@ use App\Models\EmisionesAño;
 use App\Models\EmisionDirecta;
 use App\Models\EmisionesIndirectasUsuario;
 use App\Models\EmisionFugitivaGasProduccion;
+use App\Models\ConsumoEnergeticoUsuario;
 use App\Models\Informe;
 
 class CreacionHotelController extends Controller{
@@ -45,12 +47,19 @@ class CreacionHotelController extends Controller{
             'fk_idEmisiones_Directas' => $emisionDirecta->id,
         ]);
 
+        $consumoMaquinaria = ConsumoMaquinariaUsuario::create([
+            'fk_idEmisiones_Directas' => $emisionDirecta->id,
+        ]);
+
         $AñoInforme = $request->session()->get('añoInforme');
+
+        $consumoEnergetico = ConsumoEnergeticoUsuario::create([]);
 
         $emisionAño = EmisionesAño::create([
             'fk_idHotel' => $hotel -> id,
             'fk_idEmisiones_Directas' => $emisionDirecta -> id,    
             'fk_idEmisionesIndirectas' => $emisionesIndirectas -> id,
+            'fk_idconsumoEnergetico' => $consumoEnergetico -> id,
             'año' => $AñoInforme,
         ]);
 

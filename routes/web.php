@@ -68,6 +68,9 @@ Route::post('/comprobarUsuario',[LoginController::class, 'login'])->name('combro
 use App\Http\Controllers\EmisionesDirectasController;
 Route::get('/emisiones', [EmisionesDirectasController::class, 'listadoNombres']);
 
+use App\Http\Controllers\ListadoEmisIndiController;
+Route::get('emisionesIndi', [ListadoEmisIndiController::class, 'listarEmiIndirectas']);
+
 use App\Http\Controllers\ComercializadorasController;
 use App\Http\Controllers\GuardarEmisionesDirectasController;
 
@@ -88,6 +91,8 @@ Route::post('/ObtenerHotel', [ObtenerIdHotelController::class,'ObtenerIdHotel'])
 Route::post('/guardarEmiDirect', [GuardarEmisionesDirectasController::class,'almacenarEMIDirectas'])->name('guardarEmisionDirec');
 Route::get('/guardarEmiDirect', [GuardarEmisionesDirectasController::class,'almacenarEMIDirectas']);
 
+use App\Http\Controllers\GuardarConsumoEnergeticoController;
+Route::post('/guardarConsuEner',[GuardarConsumoEnergeticoController::class,'AlmacenarConsumoEnergetico'])->name('guardarConsuEner');
 /*PRUEBAS*/
 
 Route::post('/envioEmiDirectas', [GuardarEmisionesDirectasController::class,'almacenarEMIDirectas'])->name('guardarEmisionDirec');

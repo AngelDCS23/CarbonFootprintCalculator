@@ -36,14 +36,13 @@ class InformeController extends Controller{
 
     public function ListarInformes(Request $request){
 
-        $usuario = session('idUsuario');
-
+        $usuario = session('idusu');
+        
         if($usuario == null){
-            $usuario = session('idusu');
+            $usuario = session('idUsuario');
         }
 
         $informes = Informe::where('fk_idPersona', $usuario)->get();
-
         return view ('informes.listadoInformes',compact('informes'));
     }
 

@@ -47,34 +47,33 @@
                         <p>Comercializadora</p>
                         <p>Cantidad</p>
                         <p>Unidad</p>
-                        <p>Impacto ambiental (CO2e)</p>
                     </div>
                     <div class="datos_usuario">   
-                        <select name="comercializadoras" id="comerci">
-                        
-                        </select>   
-                        <input type="number" id="cantidad">
-                        <input type="text" id="unidad" value="kwh" readonly>
-                        <input type="text">
+                        <form action="{{route('guardarConsuEner')}}" method="POST">
+                            @csrf
+                            <select name="comerci" id="comerci">
+                            </select>   
+                            <input type="number" id="cantidad" name="cantidad">
+                            <input type="text" id="unidad" value="kwh" readonly>
+                            <button type="submit" class="btn">Añadir</button>
+                        </form>
                     </div>
                 </div>
 
+                {{-- Div de las emisiones indirectas --}}
                 <div id="contenido_otras" style="display: none">
                     <div class="caja_datos_opciones">
-                        <button type="submit" class="btn" onclick="mostrarPopup()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
+                        <button type="submit" class="btn" onclick="mostrarPopup2()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
                     </div>
     
                     <div class="caja_datos_menu">
                         <p>Nombre</p>
                         <p>Cantidad</p>
                         <p>Unidad</p>
-                        <p>Impacto ambiental (CO2e)</p>
                     </div>
                     <div class="datos_usuario">
 
                     </div>
-                    <a href="/prueba" class="btn">Prueba</a>
-                    <a href="/ObtenerHotel">Prueba2</a>
             </div>
         </div>
     </div>
@@ -100,7 +99,7 @@
                 <div class="fila_datos_popup">
                     <label>Subtipo</label>
                     <select id="subtipo" name="subtipo">
-    
+
                     </select>
                 </div>
     
@@ -121,15 +120,52 @@
         </div>
         {{-- LimpiarSelectores();  TENGO QUE AÑADIR ESTO AL ONCLICK CUANDO FUNCIONE LO OTRO--}}
         <button type="button" onclick="OcultarPopup(); crearRegistro()" class="btn">Añadir</button>
-
-
-
     </div>
+
+    <div class="popup" id="popup2">
+        <div class="barra_superior_popup">
+            <p>Añadir</p>
+            {{-- El tema de limpiar las opciones seleccionadas tengo que terminarlo, siempre da error en la consola ya que está mal --}}
+            <img onclick="OcultarPopup2(); LimpiarSelectores()" src="{{asset('img/iconos/cerrar.png')}}" alt="">
+        </div>
+
+        <div class="cuerpo_popup">
+            <h3>Información</h3>
+            <hr>
+
+            <form action="{{route('guardarEmisionDirec')}}" method="POST">
+                <div class="fila_datos_popup">
+                    <label>Tipo:</label>
+                    <select id="emiIndi" name="emiIndi">
+                        
+                    </select>
+                </div>
+                <h3>Información</h3>
+                <hr>
+    
+                <div class="fila_datos_popup">
+                    <label>Cantidad</label>
+                    <input type="text" id="cantidadAña" required>
+                    
+                </div>
+    
+                <div class="fila_datos_popup">
+                    <label>Unidad</label>
+                    <input type="text" id="unidadAña">
+                </div>
+            </form>
+        </div>
+        {{-- LimpiarSelectores();  TENGO QUE AÑADIR ESTO AL ONCLICK CUANDO FUNCIONE LO OTRO--}}
+        <button type="button" onclick="OcultarPopup2(); crearRegistro()" class="btn">Añadir</button>
+    </div>
+
 </div>
 
 <script src="{{ asset('js/selector_menu.js') }}"></script>
 <script src="{{ asset('js/popupHotel.js') }}"></script>
+<script src="{{ asset('js/popupHotel2.js') }}"></script>
 <script src="{{ asset('js/listar_nombres.js') }}"></script>
+<script src="{{ asset('js/listar_EmiIndi.js') }}"></script>
 <script src="{{ asset('js/listar_comercializadoras.js') }}"></script>
 <script src="{{ asset('js/limpiar_selectores.js') }}"></script>
 <script src="{{ asset('js/obtenerRegistrosYAñadirLista.js') }}"></script>

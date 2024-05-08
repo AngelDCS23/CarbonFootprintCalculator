@@ -72,16 +72,22 @@ class GuardarEmisionesDirectasController extends Controller{
         $idEmiFugi = $emiDirec->fk_idEmisiones_Fugitivas;
         //Obtengo el registro completo de dichas emisiones Fugitivas
         $emiFugi = EmisionFugitivaGasProduccion::find($idEmiFugi);
-        //NO TENGO NI IDEA DE QUE ESTOY HACIENDO AQUÍ
-        $ConVehiculos = ConsumoVehiculoUsuario::where('fk_idEmisiones_Directas', $idEmiDirec);
-        log::info($ConVehiculos);
+
+        //$idConVehi = $emiDirec->
+        $ConVehiculos = ConsumoVehiculoUsuario::where('fk_idEmisiones_Directas', $idEmiDirec)->first();
+        $idVehi = $ConVehiculos->id;
+        $registroVehiculos = ConsumoVehiculoUsuario::find($idVehi);
+        
+        $ConMaquinaria = ConsumoMaquinariaUsuario::where('fk_idEmisiones_Directas', $idEmiDirec)->first();
+        $idMaqui = $ConMaquinaria->id;
+        $registroMaquinaria = ConsumoMaquinariaUsuario::find($idMaqui);
 
         if($tipo == 'Consumo grupo electrógeno'){
             $emiDirec->update([
                 'Consumo_grupo_electrogeno' => $cantidad,
             ]);
         }else if($tipo == 'Emision recarga extintores CO2'){
-            $emiDirec->update([ 
+          $emiDirec->update([ 
             'Recargas_Extintores' => $cantidad
             ]); 
         }else if($tipo == 'Consumo gas natural'){
@@ -93,11 +99,15 @@ class GuardarEmisionesDirectasController extends Controller{
                 $subtipo => $cantidad,
             ]);
         }else if($tipo == 'Vehículos propios del hotel'){
-            $ConVehiculos->update([
+            $registroVehiculos->update([
                 $subtipo => $cantidad,
+                Log::info($subtipo)
+            ]);
+        }else if($tipo == 'Consumo maquinária'){
+            $registroMaquinaria->update([
+                'Consumo_Maquinaria' => $cantidad,
             ]);
         }
     }
-    
 }
 

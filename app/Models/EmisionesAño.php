@@ -15,7 +15,7 @@ class EmisionesAño extends Model
         'fk_idEmisiones_Directas',
         'fk_idEmisionesIndirectas',
         'fk_idHotel',
-        'consumo_energetico',
+        'fk_idconsumoEnergetico',
         'año',
     ];
 
