@@ -39,6 +39,7 @@ class GuardarEmisionesDirectasController extends Controller{
     public function ObtenerIdEmiIndirec(){
         $idHotel = session()->get("idHotel");
         $idEmiIndirec = EmisionesAño::where('fk_idHotel', $idHotel)->value('fk_idEmisionesIndirectas');
+        Log::info('idHotel: '. $idHotel . ' ; IdEmiIndi: '. $idEmiIndirec);
         return $idEmiIndirec;
     }
     public function ObtenerEmiDirec($idHotel){

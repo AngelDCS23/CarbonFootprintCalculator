@@ -44,6 +44,7 @@ function crearRegistro(){
 
     // Insertar el nuevo contenedor dentro del contenedor padre
     contenedorPadre.appendChild(contenedor);
+    
     var datos = {
         tipo: tipoTexto.nodeValue,
         subtipo: subtipoTexto.nodeValue,

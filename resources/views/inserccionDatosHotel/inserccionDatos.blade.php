@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                {{-- Div de las emisiones indirectas --}}
+                {{-------------------------------------------- Div de las emisiones indirectas --------------------------------------------}}
                 <div id="contenido_otras" style="display: none">
                     <div class="caja_datos_opciones">
                         <button type="submit" class="btn" onclick="mostrarPopup2()">Añadir <span><img src="{{asset('img/iconos/añadir.png')}}" alt=""></span></button>
@@ -71,7 +71,7 @@
                         <p>Cantidad</p>
                         <p>Unidad</p>
                     </div>
-                    <div class="datos_usuario">
+                    <div class="datos_usuario2">
 
                     </div>
             </div>
@@ -122,6 +122,7 @@
         <button type="button" onclick="OcultarPopup(); crearRegistro()" class="btn">Añadir</button>
     </div>
 
+    {{-------------------------------------------- PopUp2 el de las emisiones Indirectas --------------------------------------------}}
     <div class="popup" id="popup2">
         <div class="barra_superior_popup">
             <p>Añadir</p>
@@ -133,7 +134,7 @@
             <h3>Información</h3>
             <hr>
 
-            <form action="{{route('guardarEmisionDirec')}}" method="POST">
+            <form action="{{route('guardarEmisionIndi')}}" method="POST">
                 <div class="fila_datos_popup">
                     <label>Tipo:</label>
                     <select id="emiIndi" name="emiIndi">
@@ -145,18 +146,18 @@
     
                 <div class="fila_datos_popup">
                     <label>Cantidad</label>
-                    <input type="text" id="cantidadAña" required>
+                    <input type="text" id="cantidadEmiIndi" required>
                     
                 </div>
     
                 <div class="fila_datos_popup">
                     <label>Unidad</label>
-                    <input type="text" id="unidadAña">
+                    <input type="text" id="unidadIndi">
                 </div>
             </form>
         </div>
         {{-- LimpiarSelectores();  TENGO QUE AÑADIR ESTO AL ONCLICK CUANDO FUNCIONE LO OTRO--}}
-        <button type="button" onclick="OcultarPopup2(); crearRegistro()" class="btn">Añadir</button>
+        <button type="button" onclick="OcultarPopup2(); CrearRegistroIndi()" class="btn">Añadir</button>
     </div>
 
 </div>
@@ -164,6 +165,7 @@
 <script src="{{ asset('js/selector_menu.js') }}"></script>
 <script src="{{ asset('js/popupHotel.js') }}"></script>
 <script src="{{ asset('js/popupHotel2.js') }}"></script>
+<script src="{{ asset('js/CrearRegistrosEmiIndi.js') }}"></script>
 <script src="{{ asset('js/listar_nombres.js') }}"></script>
 <script src="{{ asset('js/listar_EmiIndi.js') }}"></script>
 <script src="{{ asset('js/listar_comercializadoras.js') }}"></script>
