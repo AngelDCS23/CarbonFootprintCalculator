@@ -62,7 +62,7 @@ Route::post('/guardarInforme', [InformeController::class,'AlmacenarInforme'])->n
 
 //RUTAS PARA REALIZAR PETICIONES A LA BD
 use App\Http\Controllers\LoginController;
-Route::post('/comprobarUsuario',[LoginController::class, 'login'])->name('combrobarUser');
+Route::post('/comprobarUsuario',[LoginController::class, 'loginNuevo'])->name('combrobarUser');
 
 //RUTAS PARA RECIBIR JSON (AJAX)
 use App\Http\Controllers\EmisionesDirectasController;

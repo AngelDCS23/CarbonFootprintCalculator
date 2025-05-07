@@ -11,32 +11,21 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'num_telf',
+        'premium',
+        'puesto',
+        'fk_idEmpresaGrat',
+        'fk_idEmpresa',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
@@ -44,4 +33,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function empresagrat()
+    {
+        return $this->belongsTo(EmpresaGrat::class, 'fk_idEmpresaGrat', 'id');
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'fk_idEmpresa', 'id');
+    }
+
 }

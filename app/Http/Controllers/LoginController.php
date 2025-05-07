@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller{
+    /*
     public function login(Request $request){
 
         $credenciales = $request->validate([
@@ -32,5 +33,33 @@ class LoginController extends Controller{
         }else{
             return redirect()->back()->withErrors(['error' => 'Credenciales incorrectas']);
         }
+    }
+        */
+
+    public function loginNuevo(Request $request){
+        $credenciales = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string|max:45',
+        ]);
+
+        $remember = $request->has('remember_me');
+
+        if (Auth::attempt($credenciales, $remember)) {
+            $request->session()->regenerate();
+    
+            return redirect()->route('listadoInformes');
+        }
+    
+        return back()->with('error', 'Error en el inicio de sesión');
+    
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home'); 
     }
 }

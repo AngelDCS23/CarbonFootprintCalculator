@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\EmpresaGrat;
+use App\Models\User;
+
 use App\Models\PersonaGrat;
 
 class CreacionUserGratController extends Controller{
     public function almacenarDatos(Request $request){
-        // Validamos que los datos que han introducido son válidos para meterlos en la base
         $request->validate([
             'nombre_empresa' => 'required|string|max:200',
             'num_hoteles' => 'required|integer',
@@ -19,28 +20,40 @@ class CreacionUserGratController extends Controller{
             'password' => 'required|string|max:20',
         ]);
 
-        // Creación de una nueva empresa
-        $empresa = EmpresaGrat::create([
-            'Nombre' => $request->nombre_empresa,
-            'Num_Hoteles' => $request->num_hoteles,
-        ]);
+        $nombreEmpresa = strtolower($request->nombre_empresa);
+        $nombreSolo = $request->nombre_empresa;
 
-        // Hash de la contraseña para que laravel no llore
+        $busquedaEmpresa = EmpresaGrat::where('Nombre', $nombreEmpresa)->first();
+
+        if($busquedaEmpresa){
+            \Log::info('entra en la condición');
+            $idEmpresa = $busquedaEmpresa->id;
+        }else{
+            \Log::info('Entra en el else');
+            $empresa = EmpresaGrat::create([
+                'Nombre' => $nombreEmpresa,
+                'Num_Hoteles' => $request->num_hoteles,
+            ]);
+
+            $empresa->save();
+
+            $idEmpresa = $empresa->id;
+            \Log::info('Empresa');
+            \Log::info($empresa);
+        }
+
         $hashed_password = Hash::make($request->password);
 
-        // Creación de una nueva persona asiciada a la empresa creada anteriormente
-        $persona = PersonaGrat::create([
-            'Nombre_Cont' => $request->nombre_contacto,
-            'Num_telf' => $request->num_telefono,
-            'Correo' => $request->correo,
-            'fk_idEmpresa' => $empresa->id,
+        $persona = User::create([
+            'name' => $request->nombre_contacto,
+            'email' => $request->correo,
             'password' => $hashed_password,
+            'fk_idEmpresaGrat' => $idEmpresa,
+            'premium' => '0',
+            'num_telf' => $request->num_telefono,
         ]);
 
-        $persona->empresa()->associate($empresa);
         $persona->save();
-
-        $datos = $persona->toArray() + $empresa->toArray();
 
         //Almaceno datos para enviarlos a las otras vistas
         $request->session()->put('idUsuario', $persona->id);

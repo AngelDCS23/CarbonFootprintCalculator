@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;  
 use App\Models\Informe;
+use Illuminate\Support\Facades\Auth;
 
 class InformeController extends Controller{
 
@@ -14,11 +15,13 @@ class InformeController extends Controller{
     ]);
 
     $empresa = session('fk_idEmpresa');
-    $usuario = session('idUsuario');
+    $usuario = Auth::id();
+    \Log::info('asdasdasdasdasdasdadas');
+    \Log::info($usuario);
+    \Log::info('asdasdasdasdasdasdadas');
 
-    if($empresa == null && $usuario == null){
+    if($empresa == null){
         $empresa = session('idEmpresa');
-        $usuario = session('idusu');
     }
 
     $nuveoInforme = Informe::create([
@@ -36,26 +39,20 @@ class InformeController extends Controller{
 
     public function ListarInformes(Request $request){
 
-        $usuario = session('idusu');
+        $usuario = Auth::id();
         
-        if($usuario == null){
-            $usuario = session('idUsuario');
-        }
-
         $informes = Informe::where('fk_idPersona', $usuario)->get();
+        
         return view ('informes.listadoInformes',compact('informes'));
     }
 
     public function ObtenerId(Request $request) {
+
         $nombre = $request->input('nombre');
         $año = $request->input('año');
 
-        $usuario = session('idUsuario');
+        $usuario = Auth::id();
         session()->put('añoInforme', $año);
-
-        if ($usuario == null) {
-            $usuario = session('idusu');
-        }
 
         $informe = Informe::where('nombre', $nombre)
                           ->where('año', $año)

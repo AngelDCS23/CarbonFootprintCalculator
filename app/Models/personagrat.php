@@ -23,4 +23,9 @@ class personagrat extends Authenticatable
     {
         return $this->belongsTo(EmpresaGrat::class, 'fk_idEmpresa', 'id');
     }
+
+    public function getAuthPassword()
+{
+    return $this->contraseña;
+}
 }
