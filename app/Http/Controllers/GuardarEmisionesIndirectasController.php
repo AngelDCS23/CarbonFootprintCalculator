@@ -14,14 +14,16 @@ class GuardarEmisionesIndirectasController extends Controller{
         $idHotel = session()->get("IdHotel");
         $idEmiIndirec = EmisionesAño::where('fk_idHotel', $idHotel)->value('fk_idEmisionesIndirectas');
         $registroEmiIndi = EmisionesIndirectasUsuario::where('id', $idEmiIndirec)->first();
+        \Log::info('EN LA FUNCIÓN DE OBTENER ID EMISIONES INDIRECTAS');
         Log::info($registroEmiIndi);
+        \Log::info('EN LA FUNCIÓN DE OBTENER ID EMISIONES INDIRECTAS');
         return $registroEmiIndi;
     }
 
     public function AlmacenarEmiIndi(request $request){
         
         $idhotel = session()->get('IdHotel');
-
+  
         $nombre = $request->tipoIndi;
         $cantidad = $request->cantidadEmi;
 

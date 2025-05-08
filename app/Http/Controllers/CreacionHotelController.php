@@ -12,6 +12,7 @@ use App\Models\EmisionDirecta;
 use App\Models\EmisionesIndirectasUsuario;
 use App\Models\EmisionFugitivaGasProduccion;
 use App\Models\ConsumoEnergeticoUsuario;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Informe;
 
 class CreacionHotelController extends Controller{
@@ -23,7 +24,8 @@ class CreacionHotelController extends Controller{
             'Numero_camas' => 'required|integer',
         ]);
 
-        $empresa = EmpresaGrat::find($request->session()->get('idEmpresa'));
+        $empresa = Auth::user()->fk_idEmpresaGrat;
+
         $informe = session('idInforme');
 
         $hotel = hoteles_usuario::create([
@@ -31,7 +33,7 @@ class CreacionHotelController extends Controller{
             'Direccion' => $request -> Direccion,
             'Pais' => $request -> Pais,
             'Numero_camas' => $request -> Numero_camas,
-            'fk_idEmpresa' => $empresa->id,
+            'fk_idEmpresa' => $empresa,
             'fk_idInforme' => $informe,
         ]);
 
@@ -66,6 +68,6 @@ class CreacionHotelController extends Controller{
         $hotel->empresa()->associate($empresa);
         $hotel->save();
 
-        return redirect()->route('hotel', ['idHotel' => $empresa->id]);
+        return redirect()->route('hotel');
     }
 }

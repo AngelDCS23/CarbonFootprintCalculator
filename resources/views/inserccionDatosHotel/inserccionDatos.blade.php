@@ -171,5 +171,6 @@
 <script src="{{ asset('js/listar_comercializadoras.js') }}"></script>
 <script src="{{ asset('js/limpiar_selectores.js') }}"></script>
 <script src="{{ asset('js/obtenerRegistrosYAñadirLista.js') }}"></script>
+<script src="{{ asset('js/datosAnioUsu.js') }}"></script>
 
 @endsection

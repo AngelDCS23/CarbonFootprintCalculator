@@ -16,9 +16,6 @@ class InformeController extends Controller{
 
     $empresa = session('fk_idEmpresa');
     $usuario = Auth::id();
-    \Log::info('asdasdasdasdasdasdadas');
-    \Log::info($usuario);
-    \Log::info('asdasdasdasdasdasdadas');
 
     if($empresa == null){
         $empresa = session('idEmpresa');
@@ -48,6 +45,8 @@ class InformeController extends Controller{
 
     public function ObtenerId(Request $request) {
 
+        \Log::info('Entro en la función para obtener el id del algo');
+        
         $nombre = $request->input('nombre');
         $año = $request->input('año');
 
@@ -61,6 +60,8 @@ class InformeController extends Controller{
 
         $idInforme = $informe->id;
         $AñoInforme = $informe->año;
+        \Log::info($idInforme);
+        \Log::info('Entro en la función para obtener el id del algo');
 
         session()->put('idInforme', $idInforme);
         session()->put('añoInforme', $AñoInforme);

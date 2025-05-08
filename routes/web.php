@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListarEmisionesUsuarios;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -49,6 +50,8 @@ Route::get('/anios', 'App\Http\Controllers\AniosController@index')->name('anios.
 Route::get('/datosweb', 'App\Http\Controllers\WebDatosController@listarDatos')->name('datos.index');
 
 Route::get('/listadoInformes','App\Http\Controllers\informeController@ListarInformes')->name('listadoInformes');
+
+Route::get('/registroEmiAnio', [ListarEmisionesUsuarios::class,'registroEmisionesAnioUsu'])->name('emiAnioUsu');
 
 //RUTAS PARA GUARDAR DATOS EN LA BD
 use App\Http\Controllers\CreacionUserGratController;
